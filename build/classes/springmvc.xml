@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd  
+            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd  
+            http://www.springframework.org/schema/aop  http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  
+            http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+    <!--  1.扫描控制层  2.  使用注解式的  自动注入自动去注册处理器映射器  3.视图解析器的配置  -->
+
+	<!-- 扫描Controller包路径  让注解的处理器映射器和适配器找到注解的Handler -->
+	<context:component-scan base-package="com.gqz.learn.controller" />
+	
+	<!--  使用<mvc:annotation-driven>替代注解处理器和适配器的配置-->
+	<mvc:annotation-driven></mvc:annotation-driven>
+	
+	<!--  配置视图解析器   定义跳转的文件的前后缀  InternalResourceViewResolver根据模板名称和位置解析视图-->
+	<bean id="viewResolver" 	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<!-- 配置 spring mvc 文件上传的解析器-->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设置上传文件的最大尺寸为50*2MB -->
+		<property name="maxUploadSize">
+			<value>1048577600</value>
+		</property>
+		<property name="defaultEncoding" value="utf-8"></property>
+	</bean>
+	
+	<!-- i18n start 提供了消息处理的功能（i18n或者国际化） -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename">
+			<value>/messages/message</value>
+		</property>
+	</bean>
+	
+	<!-- 基于Cookie的本地化解析器 -->
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="cookieMaxAge" value="604800" />
+		<property name="cookieName" value="Language"></property>
+	</bean>
+	<!-- i18n end -->
+
+	<!-- 配置登录拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/*"/>
+			<bean class="com.gqz.learn.util.LoginIntecepter"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	<!-- 不拦截 jsp css img 等 -->
+	<mvc:resources location="/resoure/" mapping="/resoure/**"></mvc:resources>
+	
+</beans>
