@@ -11,7 +11,7 @@
  Target Server Version : 50718
  File Encoding         : 65001
 
- Date: 24/06/2019 20:44:40
+ Date: 24/05/2019 20:44:40
 */
 
 SET NAMES utf8mb4;
@@ -35,7 +35,6 @@ CREATE TABLE `admin`  (
 -- Records of admin
 -- ----------------------------
 INSERT INTO `admin` VALUES (1, '管理员', 'admin', 'admin', NULL, 0);
-INSERT INTO `admin` VALUES (2, '甘全中', 'gqz', 'gqz', NULL, 0);
 
 -- ----------------------------
 -- Table structure for college
