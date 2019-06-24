@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gqz.learn.dao.CourseVideoMapper">
+	<resultMap id="BaseResultMap" type="com.gqz.learn.model.CourseVideo">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="path" property="path" jdbcType="VARCHAR" />
+		<result column="course_id" property="courseId" jdbcType="INTEGER" />
+		<result column="record_time" property="recordTime" jdbcType="TIMESTAMP" />
+		<result column="teacher_id" property="teacherId" jdbcType="INTEGER" />
+		<result column="state" property="state" jdbcType="VARCHAR" />
+		<result column="isDel" property="isdel" jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria"
+				separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		id, path, course_id, record_time, teacher_id, state, isDel
+	</sql>
+	<select id="selectByExample" resultMap="BaseResultMap"
+		parameterType="com.gqz.learn.model.CourseVideoExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from course_video
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from course_video
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from course_video
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<delete id="deleteByExample" parameterType="com.gqz.learn.model.CourseVideoExample">
+		delete from course_video
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" parameterType="com.gqz.learn.model.CourseVideo">
+		insert into course_video (id, path, course_id,
+		record_time, teacher_id, state,
+		isDel)
+		values (#{id,jdbcType=INTEGER}, #{path,jdbcType=VARCHAR},
+		#{courseId,jdbcType=INTEGER},
+		#{recordTime,jdbcType=TIMESTAMP}, #{teacherId,jdbcType=INTEGER}, #{state,jdbcType=VARCHAR},
+		#{isdel,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" parameterType="com.gqz.learn.model.CourseVideo">
+		insert into course_video
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="path != null">
+				path,
+			</if>
+			<if test="courseId != null">
+				course_id,
+			</if>
+			<if test="recordTime != null">
+				record_time,
+			</if>
+			<if test="teacherId != null">
+				teacher_id,
+			</if>
+			<if test="state != null">
+				state,
+			</if>
+			<if test="isdel != null">
+				isDel,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="path != null">
+				#{path,jdbcType=VARCHAR},
+			</if>
+			<if test="courseId != null">
+				#{courseId,jdbcType=INTEGER},
+			</if>
+			<if test="recordTime != null">
+				#{recordTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="teacherId != null">
+				#{teacherId,jdbcType=INTEGER},
+			</if>
+			<if test="state != null">
+				#{state,jdbcType=VARCHAR},
+			</if>
+			<if test="isdel != null">
+				#{isdel,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<select id="countByExample" parameterType="com.gqz.learn.model.CourseVideoExample"
+		resultType="java.lang.Integer">
+		select count(*) from course_video
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+	<update id="updateByExampleSelective" parameterType="map">
+		update course_video
+		<set>
+			<if test="record.id != null">
+				id = #{record.id,jdbcType=INTEGER},
+			</if>
+			<if test="record.path != null">
+				path = #{record.path,jdbcType=VARCHAR},
+			</if>
+			<if test="record.courseId != null">
+				course_id = #{record.courseId,jdbcType=INTEGER},
+			</if>
+			<if test="record.recordTime != null">
+				record_time = #{record.recordTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="record.teacherId != null">
+				teacher_id = #{record.teacherId,jdbcType=INTEGER},
+			</if>
+			<if test="record.state != null">
+				state = #{record.state,jdbcType=VARCHAR},
+			</if>
+			<if test="record.isdel != null">
+				isDel = #{record.isdel,jdbcType=INTEGER},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update course_video
+		set id = #{record.id,jdbcType=INTEGER},
+		path = #{record.path,jdbcType=VARCHAR},
+		course_id = #{record.courseId,jdbcType=INTEGER},
+		record_time = #{record.recordTime,jdbcType=TIMESTAMP},
+		teacher_id = #{record.teacherId,jdbcType=INTEGER},
+		state = #{record.state,jdbcType=VARCHAR},
+		isDel = #{record.isdel,jdbcType=INTEGER}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByPrimaryKeySelective" parameterType="com.gqz.learn.model.CourseVideo">
+		update course_video
+		<set>
+			<if test="path != null">
+				path = #{path,jdbcType=VARCHAR},
+			</if>
+			<if test="courseId != null">
+				course_id = #{courseId,jdbcType=INTEGER},
+			</if>
+			<if test="recordTime != null">
+				record_time = #{recordTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="teacherId != null">
+				teacher_id = #{teacherId,jdbcType=INTEGER},
+			</if>
+			<if test="state != null">
+				state = #{state,jdbcType=VARCHAR},
+			</if>
+			<if test="isdel != null">
+				isDel = #{isdel,jdbcType=INTEGER},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.gqz.learn.model.CourseVideo">
+		update course_video
+		set path = #{path,jdbcType=VARCHAR},
+		course_id = #{courseId,jdbcType=INTEGER},
+		record_time = #{recordTime,jdbcType=TIMESTAMP},
+		teacher_id = #{teacherId,jdbcType=INTEGER},
+		state = #{state,jdbcType=VARCHAR},
+		isDel = #{isdel,jdbcType=INTEGER}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<!-- 自定义 -->
+	<insert id="saveEntity" parameterType="com.gqz.learn.model.CourseVideo">
+		INSERT into course_video (path, course_id, record_time, teacher_id) VALUES
+		(#{path}, #{courseId}, #{recordTime}, #{teacherId})
+	</insert>
+
+	<select id="searchEntityByTeacherId" parameterType="int" resultMap="BaseResultMap">
+		SELECT v.id, v.path, (SELECT name FROM course WHERE id = v.course_id) AS
+		courseName, v.record_time FROM course_video AS v WHERE teacher_id =
+		#{id} order by id desc
+	</select>
+	<!-- 降序查询 -->
+	<select id="searchAllEntity" resultMap="BaseResultMap">
+		SELECT v.id, v.path, (SELECT name FROM course WHERE id = v.course_id) AS
+		courseName,(SELECT name FROM teacher WHERE id = v.teacher_id) AS
+		teacherName, v.record_time FROM course_video AS v order by id desc
+	</select>
+	
+	<!-- select by content -->
+	<select id="searchCourseVideoByName" parameterType="String" resultMap="BaseResultMap">
+		SELECT v.id, v.path, (SELECT name FROM course WHERE id = v.course_id) AS
+		courseName,(SELECT name FROM teacher WHERE id = v.teacher_id) AS
+		teacherName, v.record_time FROM course_video AS v  
+		where v.path LIKE CONCAT(CONCAT('%',#{content,jdbcType=VARCHAR}),'%')
+		order by id desc
+	</select>
+	
+	<!-- select by courseId -->
+	<select id="searchCourseVideoByCourseId" parameterType="Int" resultMap="BaseResultMap">
+		SELECT v.id, v.path, (SELECT name FROM course WHERE id = v.course_id) AS
+		courseName,(SELECT name FROM teacher WHERE id = v.teacher_id) AS
+		teacherName, v.record_time FROM course_video AS v 
+		where v.course_id=#{courseId} 
+		order by id desc
+	</select>
+	
+	<!-- select by content && CourseId-->
+	<select id="searchCourseVideoByTerm"  resultMap="BaseResultMap">
+		SELECT v.id, v.path, (SELECT name FROM course WHERE id = v.course_id) AS
+		courseName,(SELECT name FROM teacher WHERE id = v.teacher_id) AS
+		teacherName, v.record_time FROM course_video AS v 
+		where v.course_id=#{courseId} 
+		and v.path LIKE CONCAT(CONCAT('%',#{name,jdbcType=VARCHAR}),'%') 
+		order by id desc
+	</select>
+
+	<select id="getEntityById" resultMap="BaseResultMap">
+		SELECT * FROM course_video WHERE id = #{id}
+	</select>
+
+	<delete id="deleteEntity" parameterType="int">
+		DELETE FROM course_video WHERE id = #{id}
+	</delete>
+
+
+</mapper>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="gbk"?>
+<Configuration monitorInterval="30">
+	<Appenders>
+		<Console name="STDOUT-APPENDER" target="SYSTEM_OUT">
+			<PatternLayout charset="gbk"
+				pattern="%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n" />
+		</Console>
+
+		<!-- DEFAULT-APPENDER 被加入到Root表示INFO级别错误会被记录到log_info文件中 -->
+		<RollingRandomAccessFile name="DEFAULT-APPENDER"
+			fileName="/example_log/log_info.log" filePattern="/example_log/$${date:yyyy-MM-dd}/log_info_%d{MM_dd}_%i.log">
+			<ThresholdFilter level="INFO" onMatch="ACCEPT"
+				onMismatch="DENY" />
+			<PatternLayout charset="utf-8" pattern="%d %p %c{1.} [%t] %m%n" />
+			<Policies>
+				<OnStartupTriggeringPolicy />
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100MB" />
+			</Policies>
+		</RollingRandomAccessFile>
+
+		<!-- ERROR-APPENDER 被加入到Root表示ERROR级别错误会被记录到log_error文件中 -->
+		<RollingRandomAccessFile name="ERROR-APPENDER"
+			fileName="/example_log/log_error.log" filePattern="/example_log/$${date:yyyy-MM-dd}/log_error_%d{MM_dd}_%i.log">
+			<ThresholdFilter level="ERROR" onMatch="ACCEPT"
+				onMismatch="DENY" />
+			<PatternLayout charset="utf-8" pattern="[%d] [%t] %-5p %c - %m%n" />
+			<Policies>
+				<OnStartupTriggeringPolicy />
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100MB" />
+			</Policies>
+		</RollingRandomAccessFile>
+		
+		<RollingRandomAccessFile name="EXM-APPENDER"
+			fileName="/example_log/log_exm.log" filePattern="/example_log/$${date:yyyy-MM-dd}/log_exm_%d{MM_dd}_%i.log">
+			<PatternLayout charset="utf-8" pattern="[%d] [%t] %-5p %c - %m%n" />
+			<Policies>
+				<OnStartupTriggeringPolicy />
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100MB" />
+			</Policies>
+		</RollingRandomAccessFile>
+
+	</Appenders>
+	<Loggers>
+		<Logger name="com.example" level="info" additivity="false">
+			<AppenderRef ref="STDOUT-APPENDER" />
+			<AppenderRef ref="DEFAULT-APPENDER" />
+			<AppenderRef ref="ERROR-APPENDER" />
+		</Logger>
+		
+		<AsyncLogger name="loggerExm" level="info" additivity="false">
+			<AppenderRef ref="EXM-APPENDER" />
+		</AsyncLogger>
+
+		<Root level="info">
+			<AppenderRef ref="STDOUT-APPENDER" />
+			<AppenderRef ref="DEFAULT-APPENDER" />
+			<AppenderRef ref="ERROR-APPENDER" />
+		</Root>
+	</Loggers>
+</Configuration>

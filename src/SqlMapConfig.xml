@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	
+	<!--
+		MyBatis的配置文件  SqlMapConfig.xml :配置文件中的顺序不能乱来，对于例子中的几个配置，
+		要按照顺序来定义：properties -> settings -> typeAliases -> environments -> mappers.
+		因为mybatis是按照一个固定顺序来解析这个配置文件的，如果顺序不对，加载时会报错 
+	-->
+	
+	<!--  settings  定义mybatis的一些全局设置，这里 配置的两个属性 1.mapUnderscoreToCamelCase 2.lazyLoadingEnabled-->
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="lazyLoadingEnabled" value="true"/>
+	</settings>
+	
+	<!-- 批量定义别名，扫描com.gqz.learn.model包下的所有类，取别名类名（不区分大小写）-->
+	<!-- <typeAliases>
+		<package name="com.gqz.learn.model"/>
+	</typeAliases> -->
+	
+	<!-- MyBatis分页插件 -->
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+	</plugins>
+	
+</configuration>
+
+	
+	
+	

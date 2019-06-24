@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<context id="context1">
+
+		<!-- MyBatis逆向工程 -->
+		<jdbcConnection connectionURL="jdbc:mysql://localhost:3306/learn"
+			driverClass="com.mysql.jdbc.Driver" 
+			password="ganquanzhong" 
+			userId="root" 
+		/>
+		
+		<!-- targetProject:  model  生成PO类的位置 -->		
+		<javaModelGenerator targetPackage="com.gqz.learn.model"		targetProject="learn/src" />
+		
+		<!-- targetProject:   mapper映射文件生成的位置 -->
+		<sqlMapGenerator targetPackage="com.gqz.learn.mapper"		targetProject="learn/src" />
+		
+		<!-- targetPackage：   mapper接口生成的位置 -->
+		<javaClientGenerator targetPackage="com.gqz.learn.dao"		targetProject="learn/src" type="XMLMAPPER" />
+
+		<!-- tableName:用于自动生成代码的数据库表； domainObjectName:对应于数据库表的javaBean类名 -->    
+		<table schema="" tableName="admin"   domainObjectName="Admin"></table>
+		<table schema="" tableName="college" domainObjectName="College"></table>
+		<table schema="" tableName="course" domainObjectName="Course"></table>
+		<table schema="" tableName="course_file" domainObjectName="CourseFile"></table>
+		<table schema="" tableName="course_video" domainObjectName="CourseVideo"></table>
+		<table schema="" tableName="discuss" domainObjectName="Discuss"></table>
+		<table schema="" tableName="discuss_post" domainObjectName="DiscussPost"></table>
+		<table schema="" tableName="notice" domainObjectName="Notice"></table>
+		<table schema="" tableName="student" domainObjectName="Student"></table>
+		<table schema="" tableName="student_task" domainObjectName="StudentTask"></table>
+		<table schema="" tableName="task" domainObjectName="Task"></table>
+		<table schema="" tableName="task_question" domainObjectName="TaskQuestion"></table>
+		<table schema="" tableName="teacher" domainObjectName="Teacher"></table>
+
+	</context>
+</generatorConfiguration>
