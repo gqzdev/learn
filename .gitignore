@@ -1,0 +1,24 @@
+*.class
+
+
+
+*.iml
+# Package Files #
+*.jar
+*.war
+*.ear
+
+
+
+.idea
+.setting
+/build
+/target
+/out
+
+.classpath
+.project
+.tern-project
+
+**/*.iml
+
