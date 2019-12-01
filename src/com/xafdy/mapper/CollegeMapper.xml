@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xafdy.dao.CollegeMapper">
+  <resultMap id="BaseResultMap" type="com.xafdy.model.College">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.xafdy.model.College">
+    <result column="intro" jdbcType="LONGVARCHAR" property="intro" />
+  </resultMap>
+  
+  <insert id="saveColege" parameterType="com.xafdy.model.College">
+  	 INSERT into college (name, intro) VALUES (#{name}, #{intro})
+  </insert>
+  
+  <select id="searchCollege" resultMap="ResultMapWithBLOBs">
+  	SELECT * FROM college
+  </select>
+  
+  <select id="getCollegeById" parameterType="int" resultMap="BaseResultMap">
+  	SELECT * FROM college WHERE id = #{id}
+  </select>
+  
+  <delete id="deleteCollege" parameterType="int">
+  	DELETE FROM college WHERE id = #{id}
+  </delete>
+  
+  <delete id="updateCollege" parameterType="com.xafdy.model.College">
+  	UPDATE college SET name = #{name}, intro = #{intro} WHERE id = #{id}
+  </delete>
+  
+</mapper>

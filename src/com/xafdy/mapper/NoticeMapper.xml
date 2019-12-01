@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xafdy.dao.NoticeMapper">
+  <resultMap id="BaseResultMap" type="com.xafdy.model.Notice">
+    
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="record_time" jdbcType="TIMESTAMP" property="recordTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.xafdy.model.Notice">
+    
+   <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  
+  <insert id="saveEntity" parameterType="com.xafdy.model.Notice">
+  	 INSERT into notice (title, content, record_time) VALUES (#{title}, #{content}, #{recordTime})
+  </insert>
+  
+  <select id="searchEntity" resultMap="BaseResultMap">
+  	SELECT * FROM notice
+  </select>
+  
+  <select id="getEntityById" parameterType="int" resultMap="BaseResultMap">
+  	SELECT * FROM notice WHERE id = #{id}
+  </select>
+  
+  <delete id="deleteEntity" parameterType="int">
+  	DELETE FROM notice WHERE id = #{id}
+  </delete>
+  
+  <delete id="updateEntity" parameterType="com.xafdy.model.Notice">
+  	UPDATE notice SET title = #{title}, content = #{content}, record_time = #{recordTime} WHERE id = #{id}
+  </delete>
+  
+</mapper>

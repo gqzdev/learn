@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xafdy.dao.TeacherMapper">
+  <resultMap id="BaseResultMap" type="com.xafdy.model.Teacher">
+ 
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="gender" jdbcType="INTEGER" property="gender" />
+    <result column="college_id" jdbcType="INTEGER" property="collegeId" />
+    <result column="course_id" jdbcType="INTEGER" property="courseId" />
+    <result column="telphone" jdbcType="VARCHAR" property="telphone" />
+    <result column="id_card_no" jdbcType="VARCHAR" property="idCardNo" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="num" jdbcType="VARCHAR" property="num" />
+  </resultMap>
+  
+  <insert id="saveEntity" parameterType="com.xafdy.model.Teacher">
+  	 INSERT into teacher (name, num, college_id, telphone, id_card_no, gender, account, password, course_id) VALUES (#{name}, #{num}, #{collegeId}, #{telphone}, #{idCardNo}, #{gender}, #{account}, #{password}, #{courseId})
+  </insert>
+  
+  <select id="searchEntity" resultMap="BaseResultMap">
+  	SELECT t.id, t.name, t.num, c.name AS collegeName, t.telphone, t.id_card_no, t.course_id, (SELECT name FROM course WHERE id = t.course_id) AS courseName, CASE gender WHEN 0 THEN "男" ELSE "女" END AS genderName, t.account FROM teacher AS t JOIN college AS c ON t.college_id = c.id
+  </select>
+  
+  <select id="getEntityById" parameterType="int" resultMap="BaseResultMap">
+  	SELECT * FROM teacher WHERE id = #{id}
+  </select>
+  
+  <delete id="deleteEntity" parameterType="int">
+  	DELETE FROM teacher WHERE id = #{id}
+  </delete>
+  
+  <delete id="updateEntity" parameterType="com.xafdy.model.Teacher">
+  	UPDATE teacher SET name = #{name}, num = #{num}, college_id = #{collegeId}, telphone = #{telphone}, id_card_no = #{idCardNo}, gender = #{gender}, account = #{account}, password =  #{password}, course_id = #{courseId} WHERE id = #{id}
+  </delete>
+  
+  <select id="searchEntityByAccount" parameterType="map" resultMap="BaseResultMap">
+  	SELECT * FROM teacher WHERE account = #{account} AND password = #{password}
+  </select>
+  
+</mapper>

@@ -1,0 +1,340 @@
+/* CSS Document */
+
+* {
+	font-family:"Dengxian";
+	border-radius:0px !important;
+	}
+
+body {
+	background:#F6F6F6;
+	margin:0px;
+	padding:0px;}
+
+a:focus, a:hover {
+	text-decoration:none}
+
+.panel-group .panel + .panel {
+			margin-top:0px;}
+
+.row {
+    margin-right: 0px;
+}
+
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+	padding-right:0px;
+}
+
+.panel-group .panel-heading + .panel-collapse > .list-group, .panel-group .panel-heading + .panel-collapse > .panel-body {
+	border:none;}
+
+.panel-body {
+	padding:6px 8px 16px 8px;}
+	
+.bootstrap-select > .dropdown-toggle {
+	width:250px;
+	background:#FFF}
+
+.dropdown-menu {
+	margin:0px;}
+
+.bootstrap-select.btn-group .dropdown-menu {
+	width: 250px;
+}
+
+.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+	background:#EEE}
+
+.dropdown-menu li a {
+	padding:10px 10px;}
+
+.table > thead > tr > th {
+	font-weight:200;
+	color:#333}
+
+.panel-group {
+	margin:0px;
+	padding:0px;}
+
+#mainFrame {
+	margin:0px;
+	padding:0px;}
+
+.banner {
+	height:45px;
+	width:100%;
+	background:#3D3D3D;
+	background-image:url(../images/banner.png);}
+	
+.wk-nav-menu .open > a, .nav .open > a:focus, .nav .open > a:hover {
+	background:#1E9FD9}
+
+.wk-nav-menu {
+	border-bottom:solid 3px #1E9FD9;
+	background:#3D3D3D}
+
+.wk-nav-menu > li > a:hover {
+	color:#FFF;
+	background:#1E9FD9;
+	border-color:#1E9FD9}
+
+.wk-nav-menu > li > a:visited {
+	color:#FFF;
+	background:#1E9FD9;
+	border-color:#1E9FD9}
+
+.wk-nav-menu > li > a {
+	color:#FFF;
+	margin-right:0px;
+	text-align:center;
+	font-size:16px;}
+
+.wk-nav-menu-dropdown-menu {
+	margin:0px;
+	box-shadow:none;
+	border:none;
+	background:#3D3D3D;}
+
+.wk-nav-menu-dropdown-menu > li > a {
+	color:#FFF;
+	font-size:14px;
+	padding:8px 20px}
+
+.wk-nav-menu-dropdown-menu > li > a:focus, .wk-nav-menu-dropdown-menu > li > a:hover {
+	color:#333;
+	background:#CCC}
+
+.wk-menu-panel-header {
+	margin:0px;
+	box-shadow:none;
+	height:40px;
+	line-height:40px;
+	border:none;
+	background:#1E9FD9;
+	color:#FFF}
+
+.wk-menu-panel-body {
+	padding:0px 0px 0px 15px;}
+	
+.wk-accordion-header {
+	border:none;
+	border-bottom:solid 1px #777;
+}
+
+.wk-accordion-header > .panel-heading {
+	background:#666;
+	border:none;
+	}
+
+.wk-accordion-header > .panel-heading a {
+	color:#FFF;
+	font-size:16px;
+	}
+
+.wk-accordion-panel-group .panel {
+	}
+	
+.wk-accordion-list-group .list-group-item {
+	border:none;
+	background:#3D3D3D;
+	color:#FFF;
+	}
+
+.wk-accordion-list-group .list-group-item:hover {
+	border:none;
+	background:#AAA;
+	color:#FFF}
+	
+.wk-accordion-list-group .list-group-item:focus {
+	border:none;
+	background:#AAA;
+	color:#FFF}
+	
+.wk-breadcrumb {
+	margin:8px 15px 10px 15px;
+	background:#FFF;
+	border:solid 1px #ECECEC;
+	border-left:solid 5px #1E9FD9;}
+
+.wk-breadcrumb li a {
+	color:#333}
+
+.wk-panel {
+	margin-right:15px;
+	margin-left:15px;
+	border:solid 1px #ECECEC;
+}
+
+.wk-table-tools-panel {
+	margin-bottom:0px;
+	padding-bottom:2px;
+}
+
+.wk-panel > .panel-heading {
+	background:#FFF;
+	border-bottom:dashed 1px #CCC;
+	font-size:16px;
+}
+
+.wk-panel-footer {
+	background:#EFEFEF;
+	text-align:center;
+	padding:0px 15px;
+}
+
+
+.wk-filed-label {
+	height:34px;
+	line-height:34px;
+	text-align:right;
+	font-weight:200;
+	font-size:15px;
+	margin:10px 10px 10px 30px;}
+
+.wk-btn {
+	background:#3EADDE;
+	border:solid 1px #3EADDE;
+	color:#FFF;
+	margin:8px 10px 8px 0px !important;
+	font-weight:200}
+
+.wk-btn:focus, .wk-btn:hover {
+	background:#1E9FD9;
+	color:#FFF
+	}
+
+.wk-tool-btn {
+	background:#EEE;
+	border:solid 1px #DDD;
+	color:#333;
+	float:right;
+	margin:8px 10px 8px 0px !important;
+	font-weight:200}
+
+.wk-tool-btn:focus, .wk-tool-btn:hover {
+	background:#DDD;
+	color:#333;
+	border:solid 1px #DDD;
+	}
+	
+#wk-menu-panel {
+	background:#666;}
+
+.wk-tfoot {
+	text-align:right;}
+	
+.wk-long-2col-input {
+	width:621px !important;
+	margin:8px 10px 8px 0px !important;
+}
+
+.wk-normal-input {
+	width:250px !important;
+	margin:8px 10px 8px 0px !important;
+}
+	
+.wk-modal-header {
+	border-bottom:dashed 1px #CCC;
+	padding:10px 15px 10px 15px;}
+
+.wk-modal-footer {
+	padding:10px 15px 10px 15px;
+	background:#EFEFEF}
+
+.logonBody {
+	background:url(../images/logon_bg.jpg) no-repeat;}
+
+.logon {
+	position:absolute;
+	top:0px;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	width:504px;
+	height:532px;
+	margin:auto;
+	background:url(../images/logon.png) no-repeat;}
+	
+.register {	
+	position:absolute;
+	top:0px;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	width:504px;
+	height:532px;
+	margin:auto;
+	background-color:white;
+	}
+	
+.register .top	{
+	text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    padding-top: 30px;
+    color: #219fda;
+	}
+	
+.reg{
+	margin-top:10px;
+}
+
+.logon ul {
+	margin:215px 0px 0px 0px;}
+	
+.register ul {
+	margin:215px 0px 0px 0px;}
+
+.logon ul li {
+	width:90%;
+	padding:8px 10px;
+	list-style:none}
+	
+.register ul li {
+	width:90%;
+	padding:8px 10px;
+	list-style:none}
+
+.logon ul li input {
+	width:380px;
+	height:35px;
+	background:#FFF;
+	border:none;
+	padding:0px 10px;
+	font-size:18px; 
+	color:#666;
+	border:solid 1px #CCC}
+
+.logon ul li select { 
+	width:402px;  
+	height:35px; 
+	background:#FFF; 
+	border:none;
+	padding:0px 10px;
+	font-size:18px; 
+	color:#666;
+	border:solid 1px #CCC}
+
+.logon ul li select option {
+	height:30px;    
+	font-size:18px; 
+}
+
+.logonTip {
+	width:380px;
+	height:20px;
+	color:#1E9FD9;
+	padding:10px 10px 10px 50px;}
+
+.logonSubmitBtn {
+	width:400px;
+	height:45px;
+	background:#1E9FD9;
+	border:none;
+	font-size:18px;
+	color:#FFF;
+	cursor:pointer;
+	margin:16px 0px 0px 50px;}
+
+.wk-form-info {
+	color:#CC0000;
+}
