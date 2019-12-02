@@ -1,5 +1,6 @@
 package com.xafdy.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -87,6 +88,10 @@ public class IndexService {
 		return studentMapper.searchEntity();
 	}
 	
+	public List<Student> searchStudentByTerm(HashMap<String, Object> map) {
+		return studentMapper.searchEntityByTerm(map);
+	}
+	
 	public void deleteStudent(Integer id) {
 		studentMapper.deleteEntity(id);
 	}
@@ -131,6 +136,10 @@ public class IndexService {
 		return teacherMapper.searchEntity();
 	}
 	
+	public List<Teacher> searchTeacherByTerm(HashMap<String, Object> map) {
+		return teacherMapper.searchEntityByTerm(map);
+	}
+	
 	public void deleteTeacher(Integer id) {
 		teacherMapper.deleteEntity(id);
 	}
@@ -149,6 +158,10 @@ public class IndexService {
 	
 	public List<Course> searchCourse() {
 		return courseMapper.searchEntity();
+	}
+	
+	public List<Course> searchCourseByTerm(HashMap<String, Object> map) {
+		return courseMapper.searchEntityByTerm(map);
 	}
 	
 	public void deleteCourse(Integer id) {
@@ -239,6 +252,10 @@ public class IndexService {
 		return discussMapper.searchEntity();
 	}
 	
+	public List<Discuss> searchDiscussByTerm(Integer courseId,Integer teacherId) {
+		return discussMapper.searchEntityByTerm(courseId,teacherId);
+	}
+	
 	public void deleteDiscuss(Integer id) {
 		discussMapper.deleteEntity(id);
 	}
@@ -258,6 +275,14 @@ public class IndexService {
 	
 	public List<Task> searchTask() {
 		return taskMapper.searchEntity();
+	}
+	
+	public List<Task> searchTaskInfoByTerm(Integer courseId, Integer teacherId) {
+		return taskMapper.searchEntityByTerm(courseId,teacherId);
+	}
+	
+	public List<Task> searchTask(Integer teacherId) {
+		return taskMapper.searchEntityByTeacherId(teacherId);
 	}
 	
 	public void deleteTask(Integer id) {

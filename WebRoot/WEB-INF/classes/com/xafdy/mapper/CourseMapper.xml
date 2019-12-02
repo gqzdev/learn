@@ -19,6 +19,18 @@
   	SELECT u.id, u.name, u.num, c.name AS collegeName, u.intro FROM course AS u JOIN college AS c ON u.college_id = c.id
   </select>
   
+  <select id="searchEntityByTerm" parameterType="map" resultMap="BaseResultMap">
+  	SELECT u.id, u.name, u.num, c.name AS collegeName, u.intro 
+  		FROM course AS u JOIN college AS c ON u.college_id = c.id
+  		where 1=1
+  		<if test="searchContent!=null and searchContent!='' ">
+			and u.num like "%"#{searchContent}"%"
+  		</if>
+  		<if test="collegeId!=null and collegeId!='' and collegeId!=0 ">
+			and u.college_id = #{collegeId}
+  		</if>
+  </select>
+  
   <select id="getEntityById" parameterType="int" resultMap="BaseResultMap">
   	SELECT * FROM course WHERE id = #{id}
   </select>

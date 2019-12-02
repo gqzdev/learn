@@ -21,6 +21,27 @@
 		WHERE id = t.teacher_id) AS teacherName, (SELECT name FROM course
 		WHERE id = t.course_id) AS courseName FROM task AS t
 	</select>
+	
+	
+	<select id="searchEntityByTeacherId" parameterType="int" resultMap="BaseResultMap">
+		SELECT t.id, t.record_time, (SELECT name FROM teacher
+		WHERE id = t.teacher_id) AS teacherName, (SELECT name FROM course
+		WHERE id = t.course_id) AS courseName FROM task AS t
+		where t.teacher_id=#{teacherId}
+	</select>
+	
+	<select id="searchEntityByTerm" parameterType="int" resultMap="BaseResultMap">
+		SELECT t.id, t.record_time, (SELECT name FROM teacher
+		WHERE id = t.teacher_id) AS teacherName, (SELECT name FROM course
+		WHERE id = t.course_id) AS courseName FROM task AS t
+			where 1=1
+  		  <if test="courseId!=null and courseId!=0 ">
+	  		  and t.course_id = #{courseId}
+  		  </if>
+  		  <if test="teacherId!=null and teacherId!=0 ">
+	  		  and t.teacher_id = #{teacherId}
+  		  </if>
+	</select>
 
 	<select id="getEntityById" parameterType="int" resultMap="BaseResultMap">
 		SELECT * FROM task WHERE id = #{id}

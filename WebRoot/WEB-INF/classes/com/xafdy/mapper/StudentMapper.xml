@@ -26,6 +26,19 @@
   	SELECT s.id, s.name, s.num, c.name AS collegeName, s.telphone, s.id_card_no, CASE gender WHEN 0 THEN "男" ELSE "女" END AS genderName, s.account FROM student AS s JOIN college AS c ON s.college_id = c.id
   </select>
   
+  
+  <select id="searchEntityByTerm" parameterType="map" resultMap="BaseResultMap">
+  	SELECT s.id, s.name, s.num, c.name AS collegeName, s.telphone, s.id_card_no, CASE gender WHEN 0 THEN "男" ELSE "女" END AS genderName, s.account 
+  		FROM student AS s JOIN college AS c ON s.college_id = c.id
+  		where 1=1
+  		<if test="searchContent!=null and searchContent!='' ">
+			and s.num like "%"#{searchContent}"%"
+  		</if>
+  		<if test="collegeId!=null and collegeId!='' and collegeId!=0 ">
+			and s.college_id = #{collegeId}
+  		</if>
+  </select>
+  
   <select id="getEntityById" parameterType="int" resultMap="BaseResultMap">
   	SELECT * FROM student WHERE id = #{id}
   </select>

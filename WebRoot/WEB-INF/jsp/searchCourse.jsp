@@ -40,12 +40,32 @@
         <div class="col-lg-12">
             <div class="panel panel-default wk-panel wk-table-tools-panel">
                 <div class="panel-heading">
-                    工具栏 Tools
+                    	工具栏 Tools
                 </div>
-                <div class="panel-body">
-	                <button id="deleteBtn" type="button" class="btn btn-default wk-tool-btn">删除</button>
-	                <button id="updateBtn" type="button" class="btn btn-default wk-tool-btn">编辑</button>
-                 </div>
+                 <!-- 搜索 start -->
+				 <div style="position: absolute;top: -11px;left: 240px;">
+					<form class="navbar-form navbar-right" role="search" 
+							action="<%=basePath%>searchCourseByTerm.html" method="post">
+						<div class="form-group">
+							<input type="text" class="form-control" name="searchContent" placeholder="课程编号">
+						</div> 
+						<div class="form-group">
+							<label for="filePath" class="control-label wk-filed-label">所属学院:</label> 
+							<select class="selectpicker"  name="collegeId">
+								<option value="0">请选择所属学院</option>
+								<c:forEach items="${colleges}" var="college">
+									<option value="${college.id}">${college.name}</option>
+								</c:forEach>
+							</select>
+						</div>
+						<button type="submit"  class="btn btn-default wk-tool-btn" >查询</button>
+					</form>
+					<div>
+						<button id="deleteBtn" type="button" class="btn btn-default wk-tool-btn" style="position: absolute;top: 10px;right: -320px;">删除</button>
+		                <button id="updateBtn" type="button" class="btn btn-default wk-tool-btn" style="position: absolute;top: 10px;right: -400px;">编辑</button>
+					</div>
+				 </div>
+				 <!-- 搜索 end -->
             </div>
         </div>
     </div>

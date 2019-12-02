@@ -18,7 +18,6 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.formula.functions.DMin;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,8 +41,6 @@ import com.xafdy.model.Task;
 import com.xafdy.model.TaskQuestion;
 import com.xafdy.model.Teacher;
 import com.xafdy.service.IndexService;
-
-import javafx.scene.AmbientLight;
 
 @Controller
 public class IndexController {
@@ -190,7 +187,20 @@ public class IndexController {
 	@RequestMapping("/searchStudent")
 	public ModelAndView searchStudent() {
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("colleges", indexService.searchCollege());
 		mav.addObject("students", indexService.searchStudent());
+		mav.setViewName("searchStudent");
+		return mav;
+	}
+	
+	@RequestMapping("/searchStudentByTerm")
+	public ModelAndView searchStudentByTerm(String searchContent,Integer collegeId) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("colleges", indexService.searchCollege());
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("searchContent", searchContent);
+		map.put("collegeId", collegeId);
+		mav.addObject("students", indexService.searchStudentByTerm(map));
 		mav.setViewName("searchStudent");
 		return mav;
 	}
@@ -198,7 +208,20 @@ public class IndexController {
 	@RequestMapping("/searchTeacher")
 	public ModelAndView searchTeacher() {
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("colleges", indexService.searchCollege());
 		mav.addObject("teachers", indexService.searchTeacher());
+		mav.setViewName("searchTeacher");
+		return mav;
+	}
+	
+	@RequestMapping("/searchTeacherByTerm")
+	public ModelAndView searchTeacherByTerm(String searchContent,Integer collegeId) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("colleges", indexService.searchCollege());
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("searchContent", searchContent);
+		map.put("collegeId", collegeId);
+		mav.addObject("teachers", indexService.searchTeacherByTerm(map));
 		mav.setViewName("searchTeacher");
 		return mav;
 	}
@@ -343,7 +366,20 @@ public class IndexController {
 	@RequestMapping("/searchCourse")
 	public ModelAndView searchCourse() {
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("colleges", indexService.searchCollege());
 		mav.addObject("courses", indexService.searchCourse());
+		mav.setViewName("searchCourse");
+		return mav;
+	}
+	
+	@RequestMapping("/searchCourseByTerm")
+	public ModelAndView searchCourseByTerm(String searchContent,Integer collegeId) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("colleges", indexService.searchCollege());
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("searchContent", searchContent);
+		map.put("collegeId", collegeId);
+		mav.addObject("courses", indexService.searchCourseByTerm(map));
 		mav.setViewName("searchCourse");
 		return mav;
 	}
@@ -546,7 +582,20 @@ public class IndexController {
 	@RequestMapping("/searchDiscussInfo")
 	public ModelAndView searchDiscussInfo() {
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("courses", indexService.searchCourse());
+		mav.addObject("teachers", indexService.searchTeacher());
 		mav.addObject("discusses", indexService.searchDiscuss());
+		mav.setViewName("searchDiscussInfo");
+		return mav;
+	}
+	
+	//功能添加  筛选
+	@RequestMapping("/searchDiscussInfoByTerm")
+	public ModelAndView searchDiscussInfoByTerm(Integer courseId, Integer teacherId) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("courses", indexService.searchCourse());
+		mav.addObject("teachers", indexService.searchTeacher());
+		mav.addObject("discusses", indexService.searchDiscussByTerm(courseId,teacherId));
 		mav.setViewName("searchDiscussInfo");
 		return mav;
 	}
@@ -599,9 +648,10 @@ public class IndexController {
 	}
 	
 	@RequestMapping("/searchTask")
-	public ModelAndView searchTask() {
+	public ModelAndView searchTask(HttpSession session) {
+		Teacher teacher = (Teacher) session.getAttribute("user");
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("tasks", indexService.searchTask());
+		mav.addObject("tasks", indexService.searchTask(teacher.getId()));
 		mav.setViewName("searchTask");
 		return mav;
 	}
@@ -609,7 +659,19 @@ public class IndexController {
 	@RequestMapping("/searchTaskInfo")
 	public ModelAndView searchTaskInfo() {
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("courses", indexService.searchCourse());
+		mav.addObject("teachers", indexService.searchTeacher());
 		mav.addObject("tasks", indexService.searchTask());
+		mav.setViewName("searchTaskInfo");
+		return mav;
+	}
+	
+	@RequestMapping("/searchTaskInfoByTerm")
+	public ModelAndView searchTaskInfoByTerm(Integer courseId, Integer teacherId) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("courses", indexService.searchCourse());
+		mav.addObject("teachers", indexService.searchTeacher());
+		mav.addObject("tasks", indexService.searchTaskInfoByTerm(courseId,teacherId));
 		mav.setViewName("searchTaskInfo");
 		return mav;
 	}

@@ -1,14 +1,17 @@
 package com.xafdy.dao;
 
-import com.xafdy.model.Student;
-
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.xafdy.model.Student;
 
 public interface StudentMapper {
 	void saveEntity(Student student);
 	
 	List<Student> searchEntity();
+	
+	List<Student> searchEntityByTerm(HashMap<String, Object> map);
 	
 	void deleteEntity(Integer id);
 	

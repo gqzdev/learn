@@ -23,6 +23,19 @@
   	SELECT t.id, t.name, t.num, c.name AS collegeName, t.telphone, t.id_card_no, t.course_id, (SELECT name FROM course WHERE id = t.course_id) AS courseName, CASE gender WHEN 0 THEN "男" ELSE "女" END AS genderName, t.account FROM teacher AS t JOIN college AS c ON t.college_id = c.id
   </select>
   
+  
+  <select id="searchEntityByTerm" parameterType="map" resultMap="BaseResultMap">
+  	SELECT t.id, t.name, t.num, c.name AS collegeName, t.telphone, t.id_card_no, t.course_id, (SELECT name FROM course WHERE id = t.course_id) AS courseName, CASE gender WHEN 0 THEN "男" ELSE "女" END AS genderName, t.account 
+  		FROM teacher AS t JOIN college AS c ON t.college_id = c.id
+  		where 1=1
+  		<if test="searchContent!=null and searchContent!='' ">
+			and t.num like "%"#{searchContent}"%"
+  		</if>
+  		<if test="collegeId!=null and collegeId!='' and collegeId!=0 ">
+			and t.college_id = #{collegeId}
+  		</if>
+  </select>
+  
   <select id="getEntityById" parameterType="int" resultMap="BaseResultMap">
   	SELECT * FROM teacher WHERE id = #{id}
   </select>

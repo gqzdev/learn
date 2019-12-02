@@ -1,6 +1,8 @@
 package com.xafdy.dao;
 
 import com.xafdy.model.Teacher;
+
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +10,8 @@ public interface TeacherMapper {
 	void saveEntity(Teacher teacher);
 	
 	List<Teacher> searchEntity();
+	
+	List<Teacher> searchEntityByTerm(HashMap<String, Object> map);
 	
 	void deleteEntity(Integer id);
 	
