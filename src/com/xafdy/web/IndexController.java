@@ -705,7 +705,20 @@ public class IndexController {
 	@RequestMapping("/searchCollegeVideoInfo")
 	public ModelAndView searchCollegeVideoInfo() {
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("courses", indexService.searchCourse());
+		mav.addObject("teachers", indexService.searchTeacher());
 		mav.addObject("videos", indexService.searchAllCollegeVideo());
+		mav.setViewName("searchCollegeVideoInfo");
+		return mav;
+	}
+	
+	@RequestMapping("/searchCourseVideoInfoByTerm")
+	public ModelAndView searchCourseVideoInfoByTerm(Integer courseId, Integer teacherId) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("courses", indexService.searchCourse());
+		mav.addObject("teachers", indexService.searchTeacher());
+		List<CourseVideo> videosList = indexService.searchCollegeVideoByTerm(courseId,teacherId);
+		mav.addObject("videos", videosList);
 		mav.setViewName("searchCollegeVideoInfo");
 		return mav;
 	}
@@ -713,7 +726,20 @@ public class IndexController {
 	@RequestMapping("/searchCollegeFileInfo")
 	public ModelAndView searchCollegeFileInfo() {
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("courses", indexService.searchCourse());
+		mav.addObject("teachers", indexService.searchTeacher());
 		mav.addObject("files", indexService.searchAllCollegeFile());
+		mav.setViewName("searchCollegeFileInfo");
+		return mav;
+	}
+	
+	@RequestMapping("/searchCourseFileInfoByTerm")
+	public ModelAndView searchCourseInfoByTerm(Integer courseId, Integer teacherId) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("courses", indexService.searchCourse());
+		mav.addObject("teachers", indexService.searchTeacher());
+		List<CourseFile> filesList = indexService.searchCollegeFileByTerm(courseId,teacherId);
+		mav.addObject("files", filesList);
 		mav.setViewName("searchCollegeFileInfo");
 		return mav;
 	}
@@ -848,6 +874,7 @@ public class IndexController {
 		return new ModelAndView("redirect:/logon.html");
 	}
 	
+	
 	@RequestMapping("/teacherDataImport")
 	public ModelAndView teacherDataImport(@RequestParam("file") MultipartFile file) {
 		Teacher teacher = new Teacher();
@@ -915,11 +942,78 @@ public class IndexController {
 	        return new ModelAndView("redirect:/searchTeacher.html");
 	}
 	
+	
 	@RequestMapping("/createManyTeacher")
 	public ModelAndView createManyTeacher() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("createManyTeacher");
 		return mav;
+	}
+	
+	
+	//添加功能点⑤   批量导入学生信息
+	@RequestMapping("/studentDataImport")
+	public ModelAndView studentDataImport(@RequestParam("file") MultipartFile file) {
+		 Student student = new Student();
+		 int totalRows;
+		 int totalCells; 
+		 List<ArrayList<String>> list = new ArrayList<ArrayList<String>>();  
+	        // IO流读取文件  
+	        InputStream input = null;  
+	        HSSFWorkbook wb = null;  
+	        ArrayList<String> rowList = null;  
+	        try {  
+	            input = file.getInputStream();  
+	            // 创建文档  
+	            wb = new HSSFWorkbook(input);                         
+	            //读取sheet(页)  
+	            for(int numSheet=0;numSheet<wb.getNumberOfSheets();numSheet++){  
+	                HSSFSheet hssfSheet = wb.getSheetAt(numSheet);  
+	                if(hssfSheet == null){  
+	                    continue;  
+	                }  
+	                totalRows = hssfSheet.getLastRowNum();                
+	                //读取Row,从第二行开始  
+	                for(int rowNum = 1;rowNum <= totalRows;rowNum++){  
+	                    HSSFRow hssfRow = hssfSheet.getRow(rowNum);  
+	                    if(hssfRow!=null){  
+	                        rowList = new ArrayList<String>();  
+	                        totalCells = hssfRow.getLastCellNum();  
+	                        //读取列，从第一列开始  
+                            HSSFCell cell = hssfRow.getCell(0);
+                            student.setName(cell.getStringCellValue());
+                            cell = hssfRow.getCell(1);
+                            student.setNum(cell.getStringCellValue());
+                            cell = hssfRow.getCell(2);
+                            student.setCollegeId((int)cell.getNumericCellValue());
+                            cell = hssfRow.getCell(3);  
+                            DecimalFormat format = new DecimalFormat("#");  
+                            Number value = cell.getNumericCellValue();                              
+                            student.setTelphone(format.format(value));
+                            cell = hssfRow.getCell(4);
+                            student.setIdCardNo(cell.getStringCellValue());
+                            cell = hssfRow.getCell(5);                            
+                            student.setGender((int)cell.getNumericCellValue());
+                            cell = hssfRow.getCell(6);
+                            student.setAccount(cell.getStringCellValue());
+                            cell = hssfRow.getCell(7);
+                            student.setPassword(cell.getStringCellValue());
+                            indexService.saveStudent(student);
+	                    }                     
+	                }  
+	            }  
+	        } catch (IOException e) {             
+	            e.printStackTrace();
+	            System.out.println("数据导入失败！！");
+	        } finally{  
+	            try {  
+	                input.close();  
+	            } catch (IOException e) {  
+	                e.printStackTrace();  
+	            }  
+	        }  
+	        
+	        return new ModelAndView("redirect:/searchStudent.html");
 	}
 	
 	@RequestMapping("/createManyStudent")

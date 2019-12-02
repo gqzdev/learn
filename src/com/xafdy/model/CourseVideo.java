@@ -43,6 +43,7 @@ public class CourseVideo {
     
     private String courseName;
     
+    private String teacherName;
     
 
 	public Integer getTeacherId() {
@@ -141,4 +142,12 @@ public class CourseVideo {
     public void setRecordTime(Date recordTime) {
         this.recordTime = recordTime;
     }
+
+	public String getTeacherName() {
+		return teacherName;
+	}
+
+	public void setTeacherName(String teacherName) {
+		this.teacherName = teacherName;
+	}
 }

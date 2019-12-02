@@ -199,6 +199,14 @@ public class IndexService {
 		return courseFileMapper.searchAllEntity();
 	}
 	
+	public List<CourseFile> searchCollegeFileByTerm(Integer courseId,Integer teacherId) {
+		return courseFileMapper.searchEntityByTerm(courseId,teacherId);
+	}
+	
+	public List<CourseVideo> searchCollegeVideoByTerm(Integer courseId,Integer teacherId) {
+		return collegeVideoMapper.searchEntityByTerm(courseId,teacherId);
+	}
+	
 	public CourseVideo getCourseVideoById(Integer id) {
 		return collegeVideoMapper.getEntityById(id);
 	}
@@ -316,4 +324,5 @@ public class IndexService {
 	public Teacher teacherLogon(Map<String, String> map) {
 		return teacherMapper.searchEntityByAccount(map);
 	}
+
 }

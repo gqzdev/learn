@@ -48,6 +48,8 @@ public class CourseFile {
      */
     private Integer teacherId;
     
+    private String teacherName;
+    
     private String courseName;
     
 
@@ -178,4 +180,20 @@ public class CourseFile {
     public void setTeacherId(Integer teacherId) {
         this.teacherId = teacherId;
     }
+
+	public String getTeacherName() {
+		return teacherName;
+	}
+
+	public void setTeacherName(String teacherName) {
+		this.teacherName = teacherName;
+	}
+
+	@Override
+	public String toString() {
+		return "CourseFile [id=" + id + ", path=" + path + ", courseId=" + courseId + ", recordTime=" + recordTime
+				+ ", teacherId=" + teacherId + ", teacherName=" + teacherName + ", courseName=" + courseName + "]";
+	}
+	
+	
 }

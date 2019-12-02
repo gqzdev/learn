@@ -32,7 +32,7 @@
 			<ul class="breadcrumb wk-breadcrumb">
 				<li><a href="#">大学生学习平台</a></li>
 	            <li><a href="#">课程文件管理</a></li>
-	            <li><a href="#">课程文档查询</a></li>
+	            <li><a href="#">课程文档信息查询</a></li>
 			</ul>
 		</div>
 	</div>
@@ -40,12 +40,44 @@
 	<div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default wk-panel wk-table-tools-panel">
-                <div class="panel-heading">
-                    工具栏 Tools
-                </div>
-                <div class="panel-body">
-	                <button id="downBtn" type="button" class="btn btn-default wk-tool-btn">下载文件</button>
+                 <div class="panel-heading">
+                    	工具栏 Tools
                  </div>
+                 <!-- 搜索 start -->
+				 <div style="position: absolute;top: -11px;left: 240px;">
+					<form class="navbar-form navbar-right" role="search" 
+							action="<%=basePath%>searchCourseFileInfoByTerm.html" method="post">
+						<!-- 
+						<div class="form-group">
+							<input type="text" class="form-control" v-model="searchContent" placeholder="课程名称">
+						</div> 
+						-->
+						<div class="form-group">
+							<label for="filePath" class="control-label wk-filed-label">所属课程:</label> 
+							<select class="selectpicker"  name="courseId">
+								<option value="0">请选择所属课程</option>
+								<c:forEach items="${courses}" var="course">
+									<option value="${course.id}">${course.name}</option>
+								</c:forEach>
+							</select>
+						</div>
+						
+						<div class="form-group">
+							<label for="filePath" class="control-label wk-filed-label">发布教师:</label> 
+							<select class="selectpicker"  name="teacherId" >
+								<option value="0">请选择发布教师</option>
+					 			<c:forEach items="${teachers}" var="teacher">
+					 				<option value="${teacher.id}">${teacher.name }</option>
+					 			</c:forEach>
+							</select>
+						</div>
+						<button type="submit"  class="btn btn-default wk-tool-btn" >查询</button>
+					</form>
+					<div>
+						<button id="downBtn" type="button" class="btn btn-default wk-tool-btn" style="position: absolute;top: 10px;right: -320px;">下载文件</button>
+					</div>
+				 </div>
+				 <!-- 搜索 end --> 
             </div>
         </div>
     </div>
@@ -59,6 +91,7 @@
 							<th>选择</th>
 							<th>文件名</th>
 							<th>所属课程</th>
+							<th>发布教师</th>
 							<th>上传时间</th>
 						</tr>
 					</thead>
@@ -69,6 +102,7 @@
 								type="radio" aria-label="选择" /></td>
 							<td>${var.path}</td>
 							<td>${var.courseName}</td>
+							<td>${var.teacherName}</td>
 							<td><fmt:formatDate value="${var.recordTime}" pattern="yyyy-MM-dd  HH:mm:ss" /></td>
 						</tr>
 						</c:forEach>

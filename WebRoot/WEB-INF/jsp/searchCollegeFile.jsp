@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" %>
 
 <%
 	String path = request.getContextPath();
@@ -59,6 +59,7 @@
 							<th>选择</th>
 							<th>文件名</th>
 							<th>所属课程</th>
+							<th>发布教师</th>
 							<th>上传时间</th>
 						</tr>
 					</thead>
@@ -69,6 +70,7 @@
 								type="radio" aria-label="选择" /></td>
 							<td>${var.path}</td>
 							<td>${var.courseName}</td>
+							<td>${var.teacherName }</td>
 							<td><fmt:formatDate value="${var.recordTime}" pattern="yyyy-MM-dd  HH:mm:ss" /></td>
 						</tr>
 						</c:forEach>

@@ -39,7 +39,7 @@
                 <div class="panel-heading">
                     上传数据 Create Data
                 </div>
-                <form action="<%=basePath%>/teacherDataImport.html" method="POST" enctype="multipart/form-data">
+                <form action="<%=basePath%>/studentDataImport.html" method="POST" enctype="multipart/form-data">
                 <div class="panel-body">
                     <div class="row">
                     	
