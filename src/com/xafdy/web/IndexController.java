@@ -764,15 +764,6 @@ public class IndexController {
 		return mav;
 	}
 	
-	@RequestMapping("/searchMyCourseInfo")
-	public ModelAndView searchMyCourseInfo() {
-		ModelAndView mav = new ModelAndView();
-		//我的课程
-		mav.addObject("courses", indexService.searchCourse());
-		mav.setViewName("searchMyCourseInfo");
-		return mav;
-	}
-	
 	@RequestMapping("/searchCollegeVideoInfo")
 	public ModelAndView searchCollegeVideoInfo() {
 		ModelAndView mav = new ModelAndView();
@@ -1096,12 +1087,54 @@ public class IndexController {
 	
 	//加入课程
 	@RequestMapping("/addCourse/{id}")
-	public ModelAndView addCourse(@PathVariable("id") Integer id) {
+	public ModelAndView addCourse(HttpSession session,@PathVariable("id") Integer id) {
+		Student student = (Student) session.getAttribute("user");
 		ModelAndView mav = new ModelAndView();
-//		mav.addObject("task", indexService.getTaskById(id));
-//		mav.addObject("courses", indexService.searchCourse());
+		HashMap<String , Object> map = new HashMap<>();
+		map.put("stuId",student.getId());
+		map.put("cId", id);
+		indexService.saveCollect(map);
+		mav.setViewName("redirect:/searchMyCourseInfo.html");
+		return mav;
+	}
+	
+	//我的课程
+	@RequestMapping("/searchMyCourseInfo")
+	public ModelAndView searchMyCourseInfo(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		Student student = (Student) session.getAttribute("user");
+		mav.addObject("courses", indexService.searchMyCourse(student.getId()));
 		mav.setViewName("searchMyCourseInfo");
-		
+		return mav;
+	}
+	
+	@RequestMapping("/deleteMyCourse/{id}")
+	public ModelAndView deleteMyCourse(HttpSession session,@PathVariable("id") Integer id) {
+		Student student = (Student) session.getAttribute("user");
+		ModelAndView mav = new ModelAndView();
+		HashMap<String , Object> map = new HashMap<>();
+		map.put("stuId",student.getId());
+		map.put("cId", id);
+		indexService.deleteCollect(map);
+		mav.setViewName("redirect:/searchMyCourseInfo.html");
+		return mav;
+	}
+	
+	@RequestMapping("/searchMyCourseVideo/{id}")
+	public ModelAndView searchMyCourseVideo(HttpSession session,@PathVariable("id") Integer id) {
+		ModelAndView mav = new ModelAndView();
+		List<CourseVideo> videosList = indexService.searchCollegeVideoByTerm(id,0);
+		mav.addObject("videos", videosList);
+		mav.setViewName("searchCollegeVideoInfo");
+		return mav;
+	}
+	
+	@RequestMapping("/searchMyCoursefile/{id}")
+	public ModelAndView searchMyCoursefile(HttpSession session,@PathVariable("id") Integer id) {
+		ModelAndView mav = new ModelAndView();
+		List<CourseFile> filesList = indexService.searchCollegeFileByTerm(id,0);
+		mav.addObject("files", filesList);
+		mav.setViewName("searchCollegeFileInfo");
 		return mav;
 	}
 }

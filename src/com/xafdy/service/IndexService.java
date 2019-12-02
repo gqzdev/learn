@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.xafdy.dao.AdminMapper;
+import com.xafdy.dao.CollectMapper;
 import com.xafdy.dao.CollegeMapper;
 import com.xafdy.dao.CourseFileMapper;
 import com.xafdy.dao.CourseMapper;
@@ -22,6 +23,7 @@ import com.xafdy.dao.TaskMapper;
 import com.xafdy.dao.TaskQuestionMapper;
 import com.xafdy.dao.TeacherMapper;
 import com.xafdy.model.Admin;
+import com.xafdy.model.Collect;
 import com.xafdy.model.College;
 import com.xafdy.model.Course;
 import com.xafdy.model.CourseFile;
@@ -75,6 +77,9 @@ public class IndexService {
 	
 	@Resource
 	private AdminMapper adminMapper;
+	
+	@Resource 
+	private CollectMapper collectMapper;
 	
 	public void saveCollege(College college) {
 		collegeMapper.saveColege(college);
@@ -158,6 +163,10 @@ public class IndexService {
 	
 	public List<Course> searchCourse() {
 		return courseMapper.searchEntity();
+	}
+	
+	public List<Course> searchMyCourse(Integer sId) {
+		return courseMapper.searchEntityBySId(sId);
 	}
 	
 	public List<Course> searchCourseByTerm(HashMap<String, Object> map) {
@@ -348,6 +357,18 @@ public class IndexService {
 	
 	public Teacher teacherLogon(Map<String, String> map) {
 		return teacherMapper.searchEntityByAccount(map);
+	}
+
+	public void saveCollect(HashMap<String, Object> map) {
+		collectMapper.saveEntity(map);
+	}
+	
+	public List<Collect> searchCollectBySId(Integer SId) {
+		return collectMapper.searchEntityBySId(SId);
+	}
+	
+	public void deleteCollect(HashMap<String, Object> map) {
+		collectMapper.deleteEntity(map);
 	}
 
 }

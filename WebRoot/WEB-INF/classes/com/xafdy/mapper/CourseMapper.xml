@@ -19,6 +19,12 @@
   	SELECT u.id, u.name, u.num, c.name AS collegeName, u.intro FROM course AS u JOIN college AS c ON u.college_id = c.id
   </select>
   
+  <select id="searchEntityBySId" parameterType="int" resultMap="BaseResultMap">
+  	SELECT u.id, u.name, u.num, c.name AS collegeName, u.intro FROM course AS u 
+  		JOIN college AS c ON u.college_id = c.id
+  		and u.id in ( SELECT c_id FROM collect ct WHERE ct.stu_id =#{sId} )
+  </select>
+  
   <select id="searchEntityByTerm" parameterType="map" resultMap="BaseResultMap">
   	SELECT u.id, u.name, u.num, c.name AS collegeName, u.intro 
   		FROM course AS u JOIN college AS c ON u.college_id = c.id

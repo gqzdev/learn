@@ -10,6 +10,8 @@ public interface CourseMapper {
 	
 	List<Course> searchEntity();
 	
+	List<Course> searchEntityBySId(Integer sId);
+	
 	List<Course> searchEntityByTerm(HashMap<String, Object> map);
 	
 	void deleteEntity(Integer id);

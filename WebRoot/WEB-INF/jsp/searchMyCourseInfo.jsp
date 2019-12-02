@@ -45,6 +45,7 @@
                 <div class="panel-body">
 	                <button id="videoBtn" type="button" class="btn btn-default wk-tool-btn">查看课程视频</button>
 	                <button id="fileBtn" type="button" class="btn btn-default wk-tool-btn">查看课程资料</button>
+	                <button id="deleteBtn" type="button" class="btn btn-default wk-tool-btn">移除课程</button>
                  </div>
             </div>
         </div>
@@ -104,39 +105,48 @@
 	</div>
 
 	<script>
-
-    $("#deleteBtn").on("click", function() {
-        var id = "";
-        $(":radio").each(function() {
-            if ($(this).is(":checked")) {
-                id = $(this).attr("id").substr(5, $(this).attr("id").length);
-            }
-        });
-
-        if (id != "") {
-            $("#deleteConfirm").modal();
-            $("#deleteBtnOK").on("click", function() {
-                location.href = "<%=basePath%>deleteCourse/" + id + ".html";
-            });
-        }
-    });
-
-    
-
-     $("#updateBtn").on("click", function() {
-        var id = "";
-        $(":radio").each(function() {
-            if ($(this).is(":checked")) {
-                id = $(this).attr("id").substr(5, $(this).attr("id").length);
-            }
-        });         
-
-        if (id != "") {
-			location.href = "<%=basePath%>updateCourse/" + id + ".html";
-        }
-    });
-
+		$("#deleteBtn").on("click", function () {
+		    var id = "";
+		    $(":radio").each(function () {
+		        if ($(this).is(":checked")) {
+		            id = $(this).attr("id").substr(5, $(this).attr("id").length);
+		        }
+		    });
+	
+		    if (id != "") {
+		        $("#deleteConfirm").modal();
+		        $("#deleteBtnOK").on("click", function () {
+		            location.href = "<%=basePath%>deleteMyCourse/" + id + ".html";
+		        });
+		    }
+		});
+	
+		$("#videoBtn").on("click", function () {
+		    var id = "";
+		    $(":radio").each(function () {
+		        if ($(this).is(":checked")) {
+		            id = $(this).attr("id").substr(5, $(this).attr("id").length);
+		        }
+		    });
+	
+		    if (id != "") {
+		        location.href = "<%=basePath%>searchMyCourseVideo/" + id + ".html";
+		    }
+		});
+		
+		$("#fileBtn").on("click", function () {
+		    var id = "";
+		    $(":radio").each(function () {
+		        if ($(this).is(":checked")) {
+		            id = $(this).attr("id").substr(5, $(this).attr("id").length);
+		        }
+		    });
+	
+		    if (id != "") {
+		        location.href = "<%=basePath%>searchMyCoursefile/" + id + ".html";
+		    }
+		});
      
-</script>
+	</script>
 </body>
 </html>
