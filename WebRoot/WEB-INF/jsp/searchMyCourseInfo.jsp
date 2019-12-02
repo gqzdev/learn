@@ -31,7 +31,7 @@
 			<ul class="breadcrumb wk-breadcrumb">
 				<li><a href="#">大学生学习平台</a></li>
 	            <li><a href="#">课程信息管理</a></li>
-	            <li><a href="#">课程信息查询</a></li>
+	            <li><a href="#">我的课程</a></li>
 			</ul>
 		</div>
 	</div>
@@ -43,11 +43,12 @@
                     	工具栏 Tools
                 </div>
                 <div class="panel-body">
-	                <button id="addBtn" type="button" class="btn btn-default wk-tool-btn">加入课程</button>
+	                <button id="videoBtn" type="button" class="btn btn-default wk-tool-btn">查看课程视频</button>
+	                <button id="fileBtn" type="button" class="btn btn-default wk-tool-btn">查看课程资料</button>
                  </div>
             </div>
         </div>
-    </div>			 
+    </div>
 
 	<div class="row">
 		<div class="col-lg-12">
@@ -104,20 +105,6 @@
 
 	<script>
 
-	 $("#addBtn").on("click", function() {
-	        var id = "";
-	        $(":radio").each(function() {
-	            if ($(this).is(":checked")) {
-	                id = $(this).attr("id").substr(5, $(this).attr("id").length);
-	            } 
-	        });
-
-	        if (id != "") {
-	               location.href = "<%=basePath%>addCourse/" + id + ".html";
-	        }
-	    });
-	
-	
     $("#deleteBtn").on("click", function() {
         var id = "";
         $(":radio").each(function() {

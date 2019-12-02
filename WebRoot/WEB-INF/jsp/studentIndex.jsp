@@ -55,14 +55,15 @@
                             <div class="panel-heading"> 
                                 <a data-toggle="collapse" href="#BMenu" data-parent="#accordion">课程管理</a>
                             </div>
-                             <div id="BMenu" class="panel-collapse collapse">    
+                            <div id="BMenu" class="panel-collapse collapse">    
                                 <div class="list-group wk-accordion-list-group">
                                     <button type="button" class="list-group-item" id="wk-menu-panel-item-searchCourseInfo"> >&nbsp;&nbsp;查看课程信息</button>
+                                    <button type="button" class="list-group-item" id="wk-menu-panel-item-searchMyCourseInfo"> >&nbsp;&nbsp;我的课程</button>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="panel panel-info wk-accordion-header">
+                        <!-- <div class="panel panel-info wk-accordion-header">
                             <div class="panel-heading">
                                 <a data-toggle="collapse" href="#CMenu" data-parent="#accordion">文件管理</a>
                             </div>
@@ -73,10 +74,9 @@
                                     <button type="button" class="list-group-item" id="wk-menu-panel-item-searchCollegeFileInfo"> >&nbsp;&nbsp;下载课程文件</button>
                                 </div>
                             </div>
-
-                        </div>
+                        </div> -->
                         
-                        <div class="panel panel-info wk-accordion-header">
+                        <!--  <div class="panel panel-info wk-accordion-header">
                             <div class="panel-heading">
                                 <a data-toggle="collapse" href="#DMenu" data-parent="#accordion">讨论管理</a>
                             </div>
@@ -85,7 +85,7 @@
                                     <button type="button" class="list-group-item" id="wk-menu-panel-item-searchDiscussInfo"> >&nbsp;&nbsp;话题讨论</button>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         
                         <div class="panel panel-info wk-accordion-header">
                             <div class="panel-heading"> 
@@ -98,7 +98,7 @@
                             </div>
                         </div>
                         
-                        <div class="panel panel-info wk-accordion-header">
+                        <!-- <div class="panel panel-info wk-accordion-header">
                             <div class="panel-heading"> 
                                 <a data-toggle="collapse" href="#AMenu" data-parent="#accordion">作业管理</a>
                             </div>
@@ -108,7 +108,7 @@
                                     <button type="button" class="list-group-item" id="wk-menu-panel-item-searchStudentTaskInfo"> >&nbsp;&nbsp;查询已完成作业</button>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         
                         <div class="panel panel-info wk-accordion-header">
                             <div class="panel-heading"> 

@@ -764,6 +764,15 @@ public class IndexController {
 		return mav;
 	}
 	
+	@RequestMapping("/searchMyCourseInfo")
+	public ModelAndView searchMyCourseInfo() {
+		ModelAndView mav = new ModelAndView();
+		//我的课程
+		mav.addObject("courses", indexService.searchCourse());
+		mav.setViewName("searchMyCourseInfo");
+		return mav;
+	}
+	
 	@RequestMapping("/searchCollegeVideoInfo")
 	public ModelAndView searchCollegeVideoInfo() {
 		ModelAndView mav = new ModelAndView();
@@ -1082,6 +1091,17 @@ public class IndexController {
 	public ModelAndView createManyStudent() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("createManyStudent");
+		return mav;
+	}
+	
+	//加入课程
+	@RequestMapping("/addCourse/{id}")
+	public ModelAndView addCourse(@PathVariable("id") Integer id) {
+		ModelAndView mav = new ModelAndView();
+//		mav.addObject("task", indexService.getTaskById(id));
+//		mav.addObject("courses", indexService.searchCourse());
+		mav.setViewName("searchMyCourseInfo");
+		
 		return mav;
 	}
 }

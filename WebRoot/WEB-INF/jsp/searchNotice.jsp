@@ -41,7 +41,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default wk-panel wk-table-tools-panel">
                 <div class="panel-heading">
-                    工具栏 Tools
+                    	工具栏 Tools
                 </div>
                 <div class="panel-body">
 	                <button id="deleteBtn" type="button" class="btn btn-default wk-tool-btn">删除</button>
