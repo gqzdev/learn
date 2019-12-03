@@ -14,6 +14,8 @@ public interface CourseMapper {
 	
 	List<Course> searchEntityByTerm(HashMap<String, Object> map);
 	
+	List<Course> searchEntityInfoByTerm(HashMap<String, Object> map);
+	
 	void deleteEntity(Integer id);
 	
 	void updateEntity(Course course);

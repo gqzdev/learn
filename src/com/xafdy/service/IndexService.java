@@ -169,6 +169,10 @@ public class IndexService {
 		return courseMapper.searchEntityBySId(sId);
 	}
 	
+	public List<Course> searchCourseInfoByTerm(HashMap<String, Object> map) {
+		return courseMapper.searchEntityInfoByTerm(map);
+	}
+	
 	public List<Course> searchCourseByTerm(HashMap<String, Object> map) {
 		return courseMapper.searchEntityByTerm(map);
 	}

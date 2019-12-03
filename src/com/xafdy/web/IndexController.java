@@ -759,7 +759,20 @@ public class IndexController {
 	@RequestMapping("/searchCourseInfo")
 	public ModelAndView searchCourseInfo() {
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("colleges", indexService.searchCollege());
 		mav.addObject("courses", indexService.searchCourse());
+		mav.setViewName("searchCourseInfo");
+		return mav;
+	}
+	
+	@RequestMapping("/searchCourseInfoByTerm")
+	public ModelAndView searchCourseInfoByTerm(String searchContent,Integer collegeId) {
+		ModelAndView mav = new ModelAndView();
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("searchContent",searchContent);
+		map.put("collegeId",collegeId);
+		mav.addObject("colleges", indexService.searchCollege());
+		mav.addObject("courses", indexService.searchCourseInfoByTerm(map));
 		mav.setViewName("searchCourseInfo");
 		return mav;
 	}
