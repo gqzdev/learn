@@ -13,6 +13,8 @@
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>在线学习平台</title>
+<link rel="shortcut icon"	href="https://8.url.cn/edu/edu_modules/edu-ui/img/nohash/favicon.ico">
+	
 <script type="text/javascript" src="resource/lib/jquery-3.1.1.js"></script>
 <link rel="stylesheet" href="resource/css/wukong-ui.css" />
 </head>

@@ -37,6 +37,13 @@ import com.xafdy.model.Task;
 import com.xafdy.model.TaskQuestion;
 import com.xafdy.model.Teacher;
 
+/**
+ * 
+* @ClassName: IndexService
+* @Description: TODO(这里用一句话描述这个类的作用)
+* @author zhong96
+* @date 2019年12月3日 上午11:01:31
+ */
 @Service("index")
 public class IndexService {
 	@Resource

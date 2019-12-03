@@ -42,6 +42,13 @@ import com.xafdy.model.TaskQuestion;
 import com.xafdy.model.Teacher;
 import com.xafdy.service.IndexService;
 
+/**
+ * 
+* @ClassName: IndexController
+* @Description: TODO(这里用一句话描述这个类的作用)
+* @author zhong96
+* @date 2019年12月3日 上午11:01:10
+ */
 @Controller
 public class IndexController {
     @Resource
@@ -480,7 +487,11 @@ public class IndexController {
 		Integer id = Integer.parseInt(request.getParameter("courseId"));
 		
 		String fileName = multipartFile.getOriginalFilename();
-		String fileDir = "C://upload/learn/" + fileName;
+		//视频上传的路劲
+		//windows系统
+//		String fileDir = "C://upload/learn/" + fileName;
+		//Liunx系统
+		String fileDir = "/upload/learn/" + fileName;
 		multipartFile.transferTo(new File(fileDir));
 		
 		CourseVideo collegeVideo = new CourseVideo();
@@ -521,9 +532,12 @@ public class IndexController {
 	public ModelAndView saveCollegeFile(@RequestParam("file") MultipartFile multipartFile, HttpSession session, HttpServletRequest request) throws IllegalStateException, IOException {
 		Teacher teacher = (Teacher) session.getAttribute("user");
 		Integer id = Integer.parseInt(request.getParameter("courseId"));
-		
+		//文件上传的路劲
 		String fileName = multipartFile.getOriginalFilename();
-		String fileDir = "C://upload/learn/" + fileName;
+		//windows系统
+//		String fileDir = "C://upload/learn/" + fileName;
+		//Liunx系统
+		String fileDir = "/upload/learn/" + fileName;
 		multipartFile.transferTo(new File(fileDir));
 		
 		CourseFile collegeFile = new CourseFile();

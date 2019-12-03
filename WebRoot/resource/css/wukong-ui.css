@@ -10,6 +10,16 @@ body {
 	margin:0px;
 	padding:0px;}
 
+.logo {
+    margin-left: 35px;
+    font-size: 29px;
+    float: left;
+    font-family: cursive;
+    color: #069be6;
+    padding-left: 11px;
+    font-weight: 800;
+}
+
 a:focus, a:hover {
 	text-decoration:none}
 

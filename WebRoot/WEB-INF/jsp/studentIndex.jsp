@@ -13,6 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>大学生学习平台</title> 
 	<base href="<%=basePath%>">
+	<link rel="shortcut icon"	href="https://8.url.cn/edu/edu_modules/edu-ui/img/nohash/favicon.ico">
 	<link rel="stylesheet" href="resource/bootstrap/css/bootstrap.min.css" >    
 	<link rel="stylesheet" href="resource/bootstrap/css/bootstrap-theme.min.css">
 	<script type="text/javascript" src="resource/lib/jquery-3.1.1.js"></script>
@@ -24,8 +25,16 @@
 
 <body>
     <div class="row">
-        <div class="col-lg-12">
-            <div class="banner" id="banner"></div>
+       
+        <div class="col-lg-12" style="background: black;">
+        	<div id="banner" class="logo">
+					在线学习平台
+			</div>
+			<a href="http://wpa.qq.com/msgrd?v=3&uin=2027776292&site=qq&menu=yes" target="_blank">
+				<div class="logo" style="color:white;font-family: monospace;">
+					Design By 你的名字
+				</div>
+			</a>
         </div>
     </div>
 

@@ -31,7 +31,7 @@
 			style="background-image: url('resource/images/bg-01.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 				<!-- 登录form -->
-				<form class="login100-form validate-form"	action="<%=basePath%>userLogon.html" method="POST"  style="height:480px;">
+				<form class="login100-form validate-form"	action="<%=basePath%>userLogon.html" method="POST"  style="height:500px;">
 					<span class="login100-form-title p-b-49 loginTitle">在线学习平台</span>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate="请输入用户名" >
@@ -72,9 +72,11 @@
 							<div class="login100-form-bgbtn"></div>
 							<button class="login100-form-btn">登 录</button>
 						</div>
+						<a href="<%=basePath%>register.html">注册</a>
 					</div>
 					<div class="copyright">
-						<a href="#" target="_blank"> ©2019	ForFuture || Designed by 毕业设计 </a>
+						<a href="http://wpa.qq.com/msgrd?v=3&uin=2027776292&site=qq&menu=yes" target="_blank"> ©2019	ForFuture || Designed by 你的名字 </a></br>
+						<a href="http://wpa.qq.com/msgrd?v=3&uin=2027776292&site=qq&menu=yes" style="color:red;font-size:18px;">源码需求加QQ：2027776292<a>
 					</div>
 				</form>
 			</div>
