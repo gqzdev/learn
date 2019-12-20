@@ -1,3 +1,13 @@
+[![wechat-group](https://badgen.net/badge/language/SSM+Vue)](https://github.com/spring-projects/spring-boot)
+[![wechat-group](https://badgen.net/badge/demo/演示)](http://ganquanzhong.top/learn)
+[![ForFuture](https://badgen.net/badge/ForFuture/gqzdev/cyan)](http://ganquanzhong.top)
+[![github](https://badgen.net/badge/github/github?icon)](https://github.com/gqzdev)
+[![stars](https://badgen.net/github/stars/gqzdev/learn)](https://github.com/gqzdev/learn)
+[![forks](https://badgen.net/github/forks/gqzdev/learn)](https://github.com/gqzdev/learn)
+[![last-commit](https://badgen.net/github/last-commit/gqzdev/learn)](https://github.com/gqzdev/learn)
+[![prs](https://badgen.net/github/prs/gqzdev/learn)](https://github.com/gqzdev/learn)
+[![csdn](https://badgen.net/badge/blog/ganquanzhong/red)](https://blog.csdn.net/ganquanzhong)
+
 ## SSM+Bootstrap+Vue开发在线学习系统
 
 > 本课题的主要内容是开发基于Java EE的在线学习平台，使用MVC经典开发模式、Java EE的框架     SSM（Spring+SpringMVC+Mybatis）等相关技术开发网站系统。
