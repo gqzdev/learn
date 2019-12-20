@@ -1,7 +1,6 @@
 [![wechat-group](https://badgen.net/badge/language/SSM+Vue)](https://github.com/spring-projects/spring-boot)
 [![wechat-group](https://badgen.net/badge/demo/演示)](http://ganquanzhong.top/learn)
 [![ForFuture](https://badgen.net/badge/ForFuture/gqzdev/cyan)](http://ganquanzhong.top)
-[![github](https://badgen.net/badge/github/github?icon)](https://github.com/gqzdev)
 [![stars](https://badgen.net/github/stars/gqzdev/learn)](https://github.com/gqzdev/learn)
 [![forks](https://badgen.net/github/forks/gqzdev/learn)](https://github.com/gqzdev/learn)
 [![last-commit](https://badgen.net/github/last-commit/gqzdev/learn)](https://github.com/gqzdev/learn)
