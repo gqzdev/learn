@@ -36,6 +36,7 @@
 -->
 
 	<!-- email -->
+	<!-- 
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.126.com" />
 		<property name="port" value="25" />
@@ -46,5 +47,6 @@
 				<prop key="mail.smtp.auth">true</prop>
 			</props>
 		</property>
-	</bean>
+	</bean> 
+	-->
 </beans>

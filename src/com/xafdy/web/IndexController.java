@@ -45,9 +45,9 @@ import com.xafdy.service.IndexService;
 /**
  * 
 * @ClassName: IndexController
-* @Description: TODO(这里用一句话描述这个类的作用)
+* @Description: Controller
 * @author zhong96
-* @date 2019年12月3日 上午11:01:10
+* @date 2020年1月7日 下午1:32:07
  */
 @Controller
 public class IndexController {

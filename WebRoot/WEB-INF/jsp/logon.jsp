@@ -75,7 +75,7 @@
 						<a href="<%=basePath%>register.html">注册</a>
 					</div>
 					<div class="copyright">
-						<a href="http://wpa.qq.com/msgrd?v=3&uin=2027776292&site=qq&menu=yes" target="_blank"> ©2019	ForFuture || Designed by 你的名字 </a></br>
+						<a href="http://wpa.qq.com/msgrd?v=3&uin=2027776292&site=qq&menu=yes" target="_blank"> ©2020 ForFuture || Designed by 你的名字 </a></br>
 						<a href="http://wpa.qq.com/msgrd?v=3&uin=2027776292&site=qq&menu=yes" style="color:red;font-size:18px;">源码需求加QQ：2027776292<a>
 					</div>
 				</form>
