@@ -12,7 +12,7 @@
             http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
 	<!-- 默认扫描的包路径 -->
-	<context:component-scan base-package="com.xafdy.service" />
+	<context:component-scan base-package="com.gqz.service" />
 
 	<!-- redis 
 	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
