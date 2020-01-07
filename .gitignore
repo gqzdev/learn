@@ -87,3 +87,10 @@ local.properties
 .scala_dependencies
 .worksheet
 
+classes\
+.classpath
+.tern-project
+learnSys.iml
+.settings\
+.idea\
+.project
